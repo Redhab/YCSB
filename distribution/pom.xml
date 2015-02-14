@@ -5,7 +5,7 @@
   <parent>
     <groupId>com.yahoo.ycsb</groupId>
     <artifactId>root</artifactId>
-    <version>0.1.4</version>
+    <version>${project.version}</version>
   </parent>
 
   <artifactId>ycsb</artifactId>
