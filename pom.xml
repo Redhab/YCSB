@@ -43,7 +43,7 @@
  
   <!-- Properties Management -->
   <properties>
-    <project.version>0.1.5</project.version>
+    <project.version>0.1.6</project.version>
     <maven.assembly.version>2.2.1</maven.assembly.version>
     <hbase.version>0.92.1</hbase.version>
     <accumulo.version>1.6.0</accumulo.version>

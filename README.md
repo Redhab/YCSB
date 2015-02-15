@@ -14,9 +14,9 @@ Getting Started
 1. Download the latest release of YCSB:
 
     ```sh
-    wget https://github.com/downloads/brianfrankcooper/YCSB/ycsb-0.1.4.tar.gz
-    tar xfvz ycsb-0.1.4
-    cd ycsb-0.1.4
+    wget https://github.com/downloads/brianfrankcooper/YCSB/ycsb-0.1.6.tar.gz
+    tar xfvz ycsb-0.1.6
+    cd ycsb-0.1.6
     ```
     
 2. Set up a database to benchmark. There is a README file under each binding 

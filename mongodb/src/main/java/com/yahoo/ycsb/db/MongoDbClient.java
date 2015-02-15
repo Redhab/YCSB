@@ -55,6 +55,9 @@ public class MongoDbClient extends DB {
     /** The database to access. */
     private static String database;
 
+    /** The document key name. */
+    private static String keyname;
+
     /** Count the number of times initialized to teardown on the last {@link #cleanup()}. */
     private static final AtomicInteger initCount = new AtomicInteger(0);
 
@@ -75,6 +78,7 @@ public class MongoDbClient extends DB {
             String url = props.getProperty("mongodb.url",
                     "mongodb://localhost:27017");
             database = props.getProperty("mongodb.database", "ycsb");
+            keyname = props.getProperty("mongodb.keyname", "_id");
             String writeConcernType = props.getProperty("mongodb.writeConcern",
                     "safe").toLowerCase();
             final String maxConnections = props.getProperty(
@@ -198,7 +202,7 @@ public class MongoDbClient extends DB {
             db.requestStart();
 
             DBCollection collection = db.getCollection(table);
-            DBObject r = new BasicDBObject().append("_id", key);
+            DBObject r = new BasicDBObject().append(keyname, key);
             for (String k : values.keySet()) {
                 r.put(k, values.get(k).toArray());
             }
@@ -236,7 +240,7 @@ public class MongoDbClient extends DB {
             db.requestStart();
 
             DBCollection collection = db.getCollection(table);
-            DBObject q = new BasicDBObject().append("_id", key);
+            DBObject q = new BasicDBObject().append(keyname, key);
             DBObject fieldsToReturn = new BasicDBObject();
 
             DBObject queryResult = null;
@@ -286,7 +290,7 @@ public class MongoDbClient extends DB {
             db.requestStart();
 
             DBCollection collection = db.getCollection(table);
-            DBObject q = new BasicDBObject().append("_id", key);
+            DBObject q = new BasicDBObject().append(keyname, key);
             DBObject u = new BasicDBObject();
             DBObject fieldsToSet = new BasicDBObject();
             Iterator<String> keys = values.keySet().iterator();
@@ -329,9 +333,9 @@ public class MongoDbClient extends DB {
             db = mongo.getDB(database);
             db.requestStart();
             DBCollection collection = db.getCollection(table);
-            // { "_id":{"$gte":startKey, "$lte":{"appId":key+"\uFFFF"}} }
+            // { keyname:{"$gte":startKey, "$lte":{"appId":key+"\uFFFF"}} }
             DBObject scanRange = new BasicDBObject().append("$gte", startkey);
-            DBObject q = new BasicDBObject().append("_id", scanRange);
+            DBObject q = new BasicDBObject().append(keyname, scanRange);
             DBCursor cursor = collection.find(q).limit(recordcount);
             while (cursor.hasNext()) {
                 // toMap() returns a Map, but result.add() expects a
