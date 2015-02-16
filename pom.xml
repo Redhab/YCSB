@@ -5,7 +5,7 @@
 
   <groupId>com.yahoo.ycsb</groupId>
   <artifactId>root</artifactId>
-  <version>${project.version}</version>
+  <version>0.1.6</version>
   <packaging>pom</packaging>
 
   <name>YCSB Root</name>
@@ -15,11 +15,13 @@
   </description>
   <dependencies>
     <!-- voldemort -->
+<!--      
     <dependency>
       <groupId>checkstyle</groupId>
       <artifactId>checkstyle</artifactId>
       <version>5.0</version>
     </dependency>
+-->
     <dependency>
       <groupId>org.jdom</groupId>
       <artifactId>jdom</artifactId>
@@ -43,7 +45,6 @@
  
   <!-- Properties Management -->
   <properties>
-    <project.version>0.1.6</project.version>
     <maven.assembly.version>2.2.1</maven.assembly.version>
     <hbase.version>0.92.1</hbase.version>
     <accumulo.version>1.6.0</accumulo.version>
@@ -71,14 +72,14 @@
     <!--<module>elasticsearch</module>-->
     <!--<module>gemfire</module>-->
     <!--<module>infinispan</module>-->
-    <module>jdbc</module>
+    <!--<module>jdbc</module>-->
     <!--<module>mapkeeper</module>-->
     <module>mongodb</module>
     <!--<module>orientdb</module>-->
     <!--module>nosqldb</module-->
     <!--<module>redis</module>-->
     <!--<module>voldemort</module>-->
-    <module>distribution</module>
+    <!--<module>distribution</module>-->
   </modules>
 
   <build>
@@ -92,6 +93,7 @@
           <target>1.6</target>
         </configuration>
       </plugin>
+<!--
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-checkstyle-plugin</artifactId>
@@ -110,6 +112,7 @@
           </execution>
         </executions>
       </plugin>
+-->
     </plugins>
   </build>
 </project>
