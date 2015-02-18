@@ -28,7 +28,7 @@ requestdistribution=zipfian
 mongodb.url=mongodb://localhost:27017
 mongodb.database=dvs
 table=vsam_testperf
-mongodb.keyname=id
+mongodb.keyname=_id
 mongodb.writeConcern=safe
 
 #
